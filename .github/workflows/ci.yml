@@ -22,7 +22,7 @@ jobs:
           pwd
 
       - name: Test2
-        run: chmod +x try.sh && try.sh
+        run: chmod +x try.sh && ./try.sh
 
       - name: Check out llvm-project
         uses: actions/checkout@v3
