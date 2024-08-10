@@ -9,18 +9,18 @@ jobs:
     # timeout-minutes: 5  # Probably no timeout will suffice, but will see.
     runs-on: ubuntu-latest
     steps:
-      - name: Test
-        run: |
-          ls
-          pwd
-          chmod +x build_llvm/try.sh && build_llvm/try.sh
-
       - name: Check out this repository
         uses: actions/checkout@v3
         with:
           sparse-checkout: |
             *.sh
           sparse-checkout-cone-mode: false
+
+      - name: Test
+        run: |
+          ls
+          pwd
+          chmod +x build_llvm/try.sh && build_llvm/try.sh
 
       - name: Check out llvm-project
         uses: actions/checkout@v3
