@@ -1,0 +1,46 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build-llvm:
+    if: "!contains(github.event.head_commit.message, '[build]')"
+
+    # timeout-minutes: 5  # Probably no timeout will suffice, but will see.
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      # This is prettry fast, no need to cache.
+      - name: Check out llvm-project
+        run: git clone https://github.com/llvm/llvm-project --depth 1
+
+      - name: Install mold the fast linker
+        uses: rui314/setup-mold@v1
+
+      - name: Install ninja build tool
+        uses: seanmiddleditch/gha-setup-ninja@v5
+
+      - name: Run the build.sh
+        shell: bash
+        run: ./build.sh
+
+      - name: Run the test.sh
+        shell: bash
+        run: ./test.sh
+
+      - name: Zip
+        shell: bash
+        run: |
+          mkdir -p zipped
+          tar --directory llvm-project/build/ --create --xz --verbose --file zipped/llvm.tar.xz .
+          ls -lh dist/llvm.tar.xz
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: llvm
+          path: zipped
+          if-no-files-found: error
+          retention-days: 1
