@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   build-llvm:
-    if: "!contains(github.event.head_commit.message, '[build]')"
+    if: "contains(github.event.head_commit.message, '[build]')"
 
     # timeout-minutes: 5  # Probably no timeout will suffice, but will see.
     runs-on: ubuntu-latest
