@@ -16,11 +16,13 @@ jobs:
             *.sh
           sparse-checkout-cone-mode: false
 
-      - name: Test
+      - name: Test1
         run: |
           ls
           pwd
-          chmod +x build_llvm/try.sh && build_llvm/try.sh
+
+      - name: Test2
+        run: chmod +x build_llvm/try.sh && build_llvm/try.sh
 
       - name: Check out llvm-project
         uses: actions/checkout@v3
