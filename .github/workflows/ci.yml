@@ -28,19 +28,13 @@ jobs:
         uses: seanmiddleditch/gha-setup-ninja@v5
 
       - name: Build llvm
-        run: |
-          chmod +x build.sh
-          bash build.sh
+        run: bash build_llvm/build.sh
 
       - name: Run the tests
-        run: |
-          chmod +x test.sh
-          bash test.sh
+        run: bash build_llvm/test.sh
 
       - name: Zip the build
-        run: |
-          chmod +x zip.sh
-          bash zip.sh
+        run: bash build_llvm/zip.sh
 
       - name: Upload as artifacts
         uses: actions/upload-artifact@v3
