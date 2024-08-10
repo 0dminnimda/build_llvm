@@ -10,7 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Test
-        run: chmod +x build_llvm/try.sh && build_llvm/try.sh
+        run: |
+          ls
+          pwd
+          chmod +x build_llvm/try.sh && build_llvm/try.sh
 
       - name: Check out this repository
         uses: actions/checkout@v3
