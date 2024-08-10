@@ -27,16 +27,22 @@ jobs:
       - name: Install ninja build tool
         uses: seanmiddleditch/gha-setup-ninja@v5
 
-      - name: Run the build.sh
-        run: bash build.sh
+      - name: Build llvm
+        run: |
+          chmod +x build.sh
+          bash build.sh
 
-      - name: Run the test.sh
-        run: bash test.sh
+      - name: Run the tests
+        run: |
+          chmod +x test.sh
+          bash test.sh
 
-      - name: Zip
-        run: bash zip.sh
+      - name: Zip the build
+        run: |
+          chmod +x zip.sh
+          bash zip.sh
 
-      - name: Upload Artifacts
+      - name: Upload as artifacts
         uses: actions/upload-artifact@v3
         with:
           name: llvm
