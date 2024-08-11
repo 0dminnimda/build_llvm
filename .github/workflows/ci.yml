@@ -28,11 +28,6 @@ jobs:
       - name: Install ninja build tool
         uses: seanmiddleditch/gha-setup-ninja@v5
 
-      - name: Probe
-        run: |
-          ls
-          pwd
-
       - name: Build llvm
         run: chmod +x build.sh && ./build.sh
 
