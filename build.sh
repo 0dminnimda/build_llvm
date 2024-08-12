@@ -4,7 +4,7 @@
 set -o errexit
 set -o errtrace
 
-# BUILD_TYPE=MinSizeRel # Release # RelWithDebInfo
+# MinSizeRel Release
 
 cd llvm-project
 cmake -S llvm -B build -G Ninja \
