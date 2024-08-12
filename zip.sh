@@ -6,4 +6,4 @@ set -o errtrace
 
 mkdir -p zipped
 tar --directory llvm-project/build/ --create --xz --verbose --file zipped/llvm.tar.xz .
-ls -lh dist/llvm.tar.xz
+ls -lh zipped/llvm.tar.xz
