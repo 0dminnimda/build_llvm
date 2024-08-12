@@ -4,6 +4,6 @@
 set -o errexit
 set -o errtrace
 
-mkdir -p zipped
-tar --directory llvm-project/build/ --create --xz --verbose --file zipped/llvm.tar.xz .
-ls -lh zipped/llvm.tar.xz
+mkdir -p artifacts
+tar --directory llvm-project/build/ --create --xz --verbose --file artifacts/llvm.tar.xz .
+ls -lh artifacts/llvm.tar.xz
