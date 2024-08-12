@@ -36,7 +36,7 @@ jobs:
         run: chmod +x test.sh && ./test.sh
 
       - name: Zip the build
-        run: chomd +x zip.sh && ./zip.sh
+        run: chmod +x zip.sh && ./zip.sh
 
       - name: Upload as artifacts
         uses: actions/upload-artifact@v3
